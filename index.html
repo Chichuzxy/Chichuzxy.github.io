@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chichu | Solidity 智能合约开发 · 链上存证 · dApp</title>
+<style>
+  :root{
+    --bg:#FDF6EC; --card:#FFFFFF; --ink:#2B2118; --muted:#7A6A5C;
+    --brand:#E8722A; --brand-soft:#FFF0E2; --line:#EDDFCC; --ok:#2F7D5D;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  header{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+  .tag{display:inline-block;background:var(--brand-soft);color:var(--brand);
+       font-size:13px;padding:4px 12px;border-radius:999px;margin-bottom:18px;font-weight:600}
+  h1{font-size:36px;letter-spacing:-.5px;line-height:1.3}
+  h1 span{color:var(--brand)}
+  .lead{margin-top:16px;font-size:17px;color:var(--muted);max-width:640px}
+  .contact{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+  .contact a{
+    display:inline-block;padding:9px 18px;border-radius:8px;text-decoration:none;
+    font-size:14px;border:1px solid var(--line);color:var(--ink);background:var(--card)
+  }
+  .contact a.primary{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:600}
+  section{padding:48px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:22px;margin-bottom:8px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:26px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .card h3{font-size:16px;margin-bottom:6px}
+  .price{color:var(--brand);font-weight:700;font-size:15px;margin-bottom:10px}
+  .card ul{list-style:none;font-size:14px;color:var(--muted)}
+  .card ul li{padding-left:14px;position:relative}
+  .card ul li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;
+    border-radius:50%;background:var(--brand)}
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:12px;
+        padding:22px;margin-bottom:14px}
+  .proj-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:8px}
+  .proj h3{font-size:17px}
+  .chip{font-size:12px;background:var(--brand-soft);color:var(--brand);
+        padding:2px 9px;border-radius:6px;font-weight:600}
+  .chip.gray{background:#F1EBE3;color:var(--muted)}
+  .proj p{font-size:14.5px;color:var(--muted);margin-bottom:12px}
+  .proof{font-size:13px;font-family:ui-monospace,Consolas,monospace;
+         color:var(--ok);word-break:break-all}
+  .proof a{color:var(--ok)}
+  .steps{counter-reset:s;list-style:none;display:grid;
+         grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+  .steps li{background:var(--card);border:1px solid var(--line);border-radius:12px;
+            padding:18px;font-size:14px;color:var(--muted);counter-increment:s}
+  .steps li::before{content:"0" counter(s);display:block;color:var(--brand);
+            font-weight:800;font-size:20px;margin-bottom:6px}
+  .steps li b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}
+  footer{padding:40px 0 64px;font-size:13.5px;color:var(--muted)}
+  footer b{color:var(--ink)}
+  @media (max-width:600px){h1{font-size:27px}header{padding:44px 0 32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="tag">可接单 · 测试网优先 · 源码全交付</div>
+  <h1>Chichu · <span>Solidity 智能合约开发</span><br>链上存证 / dApp 全栈 / 联盟链</h1>
+  <p class="lead">
+    专做能跑在链上的东西，不是 PPT。每个项目都留了链上地址和交易记录，随时可以自己点开验证。
+    中国时区，中文沟通，交付含测试用例与部署文档。
+  </p>
+  <div class="contact">
+    <a class="primary" href="https://github.com/Chichuzxy" target="_blank" rel="noopener">GitHub 源码</a>
+    <a href="mailto:aaa173134086@gmail.com">aaa173134086@gmail.com</a>
+    <a href="mailto:3046132635@qq.com">QQ 邮箱</a>
+    <a href="#services">看报价</a>
+  </div>
+</header>
+
+<section id="services">
+  <h2>能做什么 · 明码标价</h2>
+  <p class="sub">当前为实习期报价，按市场价八折。简单标品单已经到底价不再折，靠加急和多链这类增值项往上走。价格含源码、测试、部署文档，不含主网 gas。</p>
+  <div class="grid">
+    <div class="card">
+      <h3>ERC20 / NFT 发币</h3>
+      <div class="price">¥1,500 起（不折）</div>
+      <ul>
+        <li>OpenZeppelin 标准实现</li>
+        <li>含 Mint / 权限 / 白名单</li>
+        <li>测试网部署 + 验证源码</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>质押 / 锁仓 / 分红</h3>
+      <div class="price">¥2,800 起</div>
+      <ul>
+        <li>APY 计算与复利逻辑</li>
+        <li>防重入 + 溢出防护</li>
+        <li>Foundry 单元测试</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>dApp 全栈（合约+前端）</h3>
+      <div class="price">¥4,000 起</div>
+      <ul>
+        <li>钱包连接、链上读写在页面里跑通</li>
+        <li>中文界面，一键复制地址</li>
+        <li>Vercel / GitHub Pages 部署</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>联盟链存证 / 授权</h3>
+      <div class="price">面议（政企单）</div>
+      <ul>
+        <li>FISCO BCOS 存证与授权交易</li>
+        <li>多机构节点、权限控制</li>
+        <li>可用于版权 / 证照 / 合同</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="sub" style="margin:28px 0 14px">可选增值项 —— 单价不够就加项，不用抬底价</p>
+  <div class="grid">
+    <div class="card"><h3>加急交付</h3><div class="price">+30%</div><ul><li>48 小时内交测试网</li></ul></div>
+    <div class="card"><h3>主网部署代理</h3><div class="price">+¥500</div><ul><li>我出 gas 你付等值，全程录屏</li></ul></div>
+    <div class="card"><h3>浏览器源码验证</h3><div class="price">+¥200</div><ul><li>合约源码公开可查，客户最认这个</li></ul></div>
+    <div class="card"><h3>配套前端页面</h3><div class="price">+¥1,500</div><ul><li>钱包连接 + 链上操作跑通</li></ul></div>
+    <div class="card"><h3>多链部署</h3><div class="price">+¥500 / 条</div><ul><li>每多一条链加价，含各链参数适配</li></ul></div>
+    <div class="card"><h3>上线后功能迭代</h3><div class="price">¥250 / 小时</div><ul><li>按小时计，先报价再动手</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>做过的项目（链上可查）</h2>
+  <p class="sub">下面的地址和交易都是公开可验证的，不是截图。</p>
+
+  <div class="proj">
+    <div class="proj-top">
+      <h3>AgentGuard402 — x402 机器支付的链上策略护栏</h3>
+      <span class="chip">已部署 · Avalanche Fuji</span>
+      <span class="chip gray">Solidity</span>
+    </div>
+    <p>AI Agent 自动付款的场景下，用合约强制限制单笔额度、每日上限、收款白名单和到期时间，Agent 全程不持币只签名。
+      16 个测试场景全部实测通过，其中 12 个在链下预检阶段就被拦截，不消耗 gas。</p>
+    <p class="proof">
+      Registry <a href="https://testnet.snowtrace.io/address/0xA79b564BcB53fab8B218C6707d815585338b6E6C" target="_blank" rel="noopener">0xA79b564BcB53fab8B218C6707d815585338b6E6C</a><br>
+      Vault &nbsp;&nbsp;&nbsp;<a href="https://testnet.snowtrace.io/address/0xa3Bd7fA57d21fbCC0583bF790F6B4bEdDc2E472B" target="_blank" rel="noopener">0xa3Bd7fA57d21fbCC0583bF790F6B4bEdDc2E472B</a>
+    </p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-top">
+      <h3>AI Monad Explorer — 交易分析结果上链存证</h3>
+      <span class="chip">Foundry · 4 测试通过</span>
+      <span class="chip gray">Monad Testnet</span>
+    </div>
+    <p>本地小模型分析链上交易，结论经合约写入 Monad 测试网，任何人可复算校验。
+      用 Foundry 写单元测试和部署脚本，一个命令复现整条链路。</p>
+    <p class="proof">
+      <a href="https://github.com/Chichuzxy/ai-monad-explorer" target="_blank" rel="noopener">github.com/Chichuzxy/ai-monad-explorer</a>
+    </p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-top">
+      <h3>数字版权存证与授权交易系统（毕业设计，三合约架构）</h3>
+      <span class="chip">FISCO BCOS + WeBASE</span>
+      <span class="chip gray">联盟链</span>
+    </div>
+    <p>作品哈希上链存证、权利人登记、授权许可与交易记录全链留痕，三套合约在真实联盟链环境跑通，
+      含 Java SDK 后端和中文管理界面。</p>
+    <p class="proof">3 个合约已在 FISCO BCOS 链上部署并验证调用</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-top">
+      <h3>AvaxGuard — 授权风险扫描与一键撤销</h3>
+      <span class="chip">纯前端读链 · 真实执行 revoke</span>
+      <span class="chip gray">Avalanche</span>
+    </div>
+    <p>批量扫描地址对 USDC/USDT 的 allowance，规则引擎分四级风险，签名前用 eth_call 模拟预览，
+      撤销后回读 allowance 确认归零。这类"链上看板/工具"单子我也接。</p>
+    <p class="proof">
+      <a href="https://github.com/Chichuzxy/avaxguard" target="_blank" rel="noopener">github.com/Chichuzxy/avaxguard</a>
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>交付标准</h2>
+  <p class="sub">四件事每单必做，省掉你来判断我做得对不对。</p>
+  <div class="grid">
+    <div class="card"><h3>源码全给</h3><ul><li>不加密不藏私，可直接二次开发</li></ul></div>
+    <div class="card"><h3>测试用例</h3><ul><li>关键路径都有测试，交付前跑给你看</li></ul></div>
+    <div class="card"><h3>部署文档</h3><ul><li>一步步命令，你自己也能重部署</li></ul></div>
+    <div class="card"><h3>15 天答疑</h3><ul><li>交付后两周内问题免费处理</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>合作流程</h2>
+  <p class="sub">流程固定，减少来回沟通。</p>
+  <ol class="steps">
+    <li><b>说需求</b>发我一段文字：要什么功能、上线哪条链、什么时候要。不用开会。</li>
+    <li><b>确认范围</b>我回一份清单：做什么、不做什么、多少钱、多少天。</li>
+    <li><b>先测试网</b>在你确认前全部跑在测试网，验证过再谈主网。</li>
+    <li><b>交付验收</b>源码 + 测试 + 文档一次给全，尾款结清。</li>
+  </ol>
+</section>
+
+<section style="border-bottom:none">
+  <h2>我的原则</h2>
+  <p class="sub">先说清楚，避免浪费时间。</p>
+  <div class="grid">
+    <div class="card"><h3>不碰资金盘</h3><ul><li>貔貅盘、锁仓跑路、仿盘拉盘一律不接</li></ul></div>
+    <div class="card"><h3>不碰私钥</h3><ul><li>私钥助记词任何时候都不要给我，我也不存</li></ul></div>
+    <div class="card"><h3>不先免费验货</h3><ul><li>可给限时演示，不给完整源码</li></ul></div>
+  </div>
+</section>
+
+<footer>
+  <b>Chichu</b> · 区块链技术应用 · Solidity / FISCO BCOS / Foundry<br>
+  GitHub：<a href="https://github.com/Chichuzxy" target="_blank" rel="noopener">github.com/Chichuzxy</a>
+</footer>
+
+</div>
+</body>
+</html>
