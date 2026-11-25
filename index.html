@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chichu | Solidity 智能合约开发 · 链上存证 · dApp</title>
+<title>Chichu | 智能合约开发 · 合约安全 · 测试用例</title>
 <style>
   :root{
     --bg:#FDF6EC; --card:#FFFFFF; --ink:#2B2118; --muted:#7A6A5C;
@@ -67,9 +67,10 @@
 
 <header>
   <div class="tag">可接单 · 测试网优先 · 源码全交付</div>
-  <h1>Chichu · <span>Solidity 智能合约开发</span><br>链上存证 / dApp 全栈 / 联盟链</h1>
+  <h1>Chichu · <span>Solidity 智能合约开发</span><br>链上存证 / dApp 全栈 / 合约安全 / 测试用例</h1>
   <p class="lead">
     专做能跑在链上的东西，不是 PPT。每个项目都留了链上地址和交易记录，随时可以自己点开验证。
+    也接合约安全检查与测试用例设计——报告和用例表就是交付物，不用开会。
     中国时区，中文沟通，交付含测试用例与部署文档。
   </p>
   <div class="contact">
@@ -118,6 +119,24 @@
         <li>FISCO BCOS 存证与授权交易</li>
         <li>多机构节点、权限控制</li>
         <li>可用于版权 / 证照 / 合同</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>合约安全检查</h3>
+      <div class="price">¥800 起</div>
+      <ul>
+        <li>Slither 扫描 + 人工复核，不只跑工具</li>
+        <li>按 High / Medium / Low 分级出报告</li>
+        <li>附攻击 PoC 与修复后的复扫结果</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>测试用例设计 / 评审</h3>
+      <div class="price">¥5 / 条，50 条起</div>
+      <ul>
+        <li>前提条件 → 测试步骤 → 期望结果，三段式</li>
+        <li>正常 / 边界 / 异常分组，标优先级</li>
+        <li>交付 Excel 表，可对接 TestLink / 禅道</li>
       </ul>
     </div>
   </div>
@@ -201,6 +220,31 @@
 </section>
 
 <section>
+  <h2>样例：不用先信我，先看东西</h2>
+  <p class="sub">两份完整交付物，点开就能判断合不合你的标准。</p>
+  <div class="grid">
+    <div class="card">
+      <h3>测试用例样例</h3>
+      <div class="price">58 条 · 小红书首页 Android</div>
+      <ul>
+        <li>8 个子模块分组，覆盖正常 / 边界 / 异常</li>
+        <li>每条三段式：前提条件 → 测试步骤 → 期望结果</li>
+        <li><a href="assets/testcases-xiaohongshu-58.pdf" target="_blank" rel="noopener">下载 PDF（5 页横版）</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>合约审计报告样例</h3>
+      <div class="price">6 个问题 · High 1 / Medium 1</div>
+      <ul>
+        <li>Slither 0.11.6 + 人工审查，原始输出可逐条对账</li>
+        <li>重入攻击 PoC：攻击成功与修复有效各 1 条用例</li>
+        <li><a href="https://github.com/Chichuzxy/security-audit-lab" target="_blank" rel="noopener">GitHub 仓库（MIT）</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
   <h2>合作流程</h2>
   <p class="sub">流程固定，减少来回沟通。</p>
   <ol class="steps">
@@ -224,7 +268,8 @@
 
 <footer>
   <b>Chichu</b> · 区块链技术应用 · Solidity / FISCO BCOS / Foundry<br>
-  GitHub：<a href="https://github.com/Chichuzxy" target="_blank" rel="noopener">github.com/Chichuzxy</a>
+  GitHub：<a href="https://github.com/Chichuzxy" target="_blank" rel="noopener">github.com/Chichuzxy</a> ·
+  安全审计：<a href="https://github.com/Chichuzxy/security-audit-lab" target="_blank" rel="noopener">security-audit-lab</a>
 </footer>
 
 </div>
